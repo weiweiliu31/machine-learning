@@ -127,7 +127,7 @@ class LearningAgent(Agent):
         # Be sure that when choosing an action with highest Q-value that you randomly select between actions that "tie".
         if self.learning == False:
             action = random.choice(self.valid_actions)
-        elif self.learning == True:
+        else:
             rand = random.uniform(0, 1)
             if rand < self.epsilon:
                 action = random.choice(self.valid_actions)
@@ -177,7 +177,7 @@ def run():
     #   verbose     - set to True to display additional output from the simulation
     #   num_dummies - discrete number of dummy agents in the environment, default is 100
     #   grid_size   - discrete number of intersections (columns, rows), default is (8, 6)
-    env = Environment()
+    env = Environment(verbose=True)
     
     ##############
     # Create the driving agent
@@ -205,7 +205,7 @@ def run():
     #   optimized    - set to True to change the default log file name
     #sim = Simulator(env)
     #sim = Simulator(env, update_delay=0.00001, log_metrics=True)
-    sim = Simulator(env, update_delay=0.00001, log_metrics=True, optimized=True)
+    sim = Simulator(env, update_delay=0.00001, display=True, log_metrics=True, optimized=True)
     
     
     ##############
